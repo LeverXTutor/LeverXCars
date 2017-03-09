@@ -1,0 +1,8 @@
+{
+  "LeverXCars.synonyms::KNA1": {
+    "target": {
+      "object": "saperp.data::core_model.KNA1",
+      "schema.configure"    : "hdi-saperp-service/schema"
+    }
+  }
+}

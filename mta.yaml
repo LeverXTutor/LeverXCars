@@ -1,0 +1,33 @@
+_schema-version: '2.0'
+ID: LeverXCars
+version: 0.0.1
+
+modules:
+ - name: core-db
+   type: hdb
+   path: core-db
+   requires:
+    - name: hdi-container
+      properties:
+        TARGET_CONTAINER: ~{hdi-container-name}
+    
+    - name: CrossContainerService
+      group: SERVICE_REPLACEMENTS
+      properties:
+        key: hdi-saperp-service
+        service: ~{saperp-service-name}
+
+resources:
+ - name: hdi-container
+   properties:
+      hdi-container-name: ${service-name}
+   type: com.sap.xs.hdi-container
+   parameters:
+     schema: LEVERX_CARS_00
+     
+ - name: CrossContainerService
+   type: org.cloudfoundry.existing-service
+   parameters:
+     service-name: SAPERP-3y1e18qwpvtwqq3w-SAPERP-hdi-container
+   properties:
+     saperp-service-name: ${service-name}

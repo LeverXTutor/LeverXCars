@@ -1,0 +1,10 @@
+{
+  "hdi-saperp-service": {
+    "object_owner" : {
+    	"container_roles":["saperp.roles::dataConsumer2#"]
+    },
+    "application_user" : {
+    	"container_roles":["saperp.roles::dataConsumer3"]
+    }
+  }
+}

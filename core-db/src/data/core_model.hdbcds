@@ -1,0 +1,16 @@
+namespace LeverXCars.data;
+using "LeverXCars.synonyms::KNA1" as Customer;
+using "LeverXCars.synonyms::DUMMY" as Dummy;
+
+context core_model {
+	
+	define view CustomerView as select from Customer {
+		CUSTID as "CustomerId",
+		NAME as "CustomerName",
+		ADDRESS as "CustomerAddress"
+	};
+	
+	define view LOL as select from Dummy {
+		'CUSTID' as CustomerId
+	};
+};
