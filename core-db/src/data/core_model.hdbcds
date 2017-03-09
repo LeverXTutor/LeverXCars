@@ -4,6 +4,41 @@ using "LeverXCars.synonyms::DUMMY" as Dummy;
 
 context core_model {
 	
+	type CommonKey: String(20);
+	type CarModel: String(10);
+	type SDate: LocalDate;
+	type ServiceDescr: String(40);
+	type CarDescr: String(30);
+	type AmountT: Decimal(15,2);
+	type CurrencyT: String(5);
+	type CarVIN: String(17);
+	type CarLicplate: String(10);
+	type CustomerName: String(15);
+	type AddressT: String(55);
+	
+	entity Car {
+	    key CARID: CommonKey;
+	    key CUSTID: CommonKey;
+	    MODEL: CarModel;
+	    DESCR: CarDescr;
+	    VIN: CarVIN;
+	    LICPLATE: CarLicplate;
+	} technical configuration {
+		column store;
+	};
+	
+	entity Service {
+		key SERVICEID: CommonKey;
+		key CARID: CommonKey;
+		STARTDATE: SDate;
+		ENDDATE: SDate;
+		DESCR: ServiceDescr;
+		AMOUNT: AmountT;
+		CURRENCY: CurrencyT;
+	}	technical configuration {
+		column store;
+	};
+   
 	define view CustomerView as select from Customer {
 		CUSTID as "CustomerId",
 		NAME as "CustomerName",
