@@ -9,8 +9,4 @@ context core_model {
 		NAME as "CustomerName",
 		ADDRESS as "CustomerAddress"
 	};
-	
-	define view LOL as select from Dummy {
-		'CUSTID' as CustomerId
-	};
 };
