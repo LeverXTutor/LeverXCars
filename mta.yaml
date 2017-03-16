@@ -3,6 +3,18 @@ ID: LeverXCars
 version: 0.0.1
 
 modules:
+ - name: web
+   type: html5
+   path: web
+   requires:
+    - name: levxcars09-uaa
+    - name: core-js-service
+      group: destinations
+      properties:
+        name: core-backend
+        url: ~{url}
+        forwardAuthToken: true
+        
  - name: core-db
    type: hdb
    path: core-db
@@ -10,14 +22,30 @@ modules:
     - name: hdi-container
       properties:
         TARGET_CONTAINER: ~{hdi-container-name}
-    
     - name: CrossContainerService
       group: SERVICE_REPLACEMENTS
       properties:
         key: hdi-saperp-service
         service: ~{saperp-service-name}
 
+ - name: core-js
+   type: nodejs
+   path: core-js
+   provides:
+    - name: core-js-service
+      properties:
+        url: "${default-url}"
+   requires:
+     - name: levxcars09-uaa
+     - name: hdi-container
+     - name: core-db
+
 resources:
+ - name: levxcars09-uaa
+   parameters:
+     config_path: ./xs-security.json
+   type: com.sap.xs.uaa
+   
  - name: hdi-container
    properties:
       hdi-container-name: ${service-name}
