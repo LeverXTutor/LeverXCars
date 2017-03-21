@@ -11,5 +11,14 @@
 		"destination": "core-backend",
 		"csrfProtection": false,
 		"authenticationType": "xsuaa"
+	}, {
+		"source": "/(.*)",
+		"localDir": "resources",
+		"authenticationType": "xsuaa",
+		"csrfProtection": false,
+		"replace": {
+			"pathSuffixes": ["index.html", "odataTest.html"],
+			"vars": ["ui5liburl"]
+		}
 	}]
 }

@@ -1,0 +1,19 @@
+service {
+	"car_std2.data::core_model.Car" as "Car" navigates ( "Services" as "CarService", "Customer" as "Customer")
+		create using "xsjs:carCreateMethod.xsjslib::carCreate";
+	
+	"car_std2.data::core_model.Service" as "CarService";
+	"car_std2.data::core_model.CustomerView" as "Customer";
+	
+	association "Services"
+		principal "Car"("CARID")
+		multiplicity "1"
+		dependent "CarService"("CARID")
+		multiplicity "*";
+		
+	association "Customer"
+		principal "Customer"("CUSTID")
+		multiplicity "1"
+		dependent "Car"("CUSTID")
+		multiplicity "*";
+}
