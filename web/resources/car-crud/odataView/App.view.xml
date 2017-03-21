@@ -1,0 +1,66 @@
+<core:View xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" controllerName="controller.App">
+	<ScrollContainer height="100%" width="100%" horizontal="true" vertical="true">
+		<Panel headerText="New Car Record Details" expandable="true" expanded="true">
+			<List width="400px">
+				<InputListItem label="Car Id">
+					<Input id="carId" value="{/CarId}"/>
+				</InputListItem>
+				<InputListItem label="Customer Id">
+					<Input id="custId" value="{/CustId}"/>
+				</InputListItem>
+				<InputListItem label="Model">
+					<Input id="model" value="{/Model}"/>
+				</InputListItem>
+				<InputListItem label="Description">
+					<Input id="descr" value="{/Descr}"/>
+				</InputListItem>
+				<InputListItem label="VIN">
+					<Input id="vin" value="{/Vin}"/>
+				</InputListItem>
+				<InputListItem label="License plate">
+					<Input id="licPlate" value="{/LicPlate}"/>
+				</InputListItem>
+			</List>
+			<Button text="Create Record" press="callCarService"/>
+			<Button text="Update Changes" press="callCarUpdate"/>
+			<Button text="Create with Batch Dialog" press="onBatchDialogPress"/>
+			<Button text="Delete selected records" press="callDeleteSelected"/>
+		</Panel>
+		<Panel headerText="Car List" expandable="true" expanded="true">
+			<Table id="TableCar" tableId="carTable" growingThreshold="10" growing="true" items="{ path: 'carModel>/Car'}" mode="MultiSelect">
+				<columns>
+					<Column>
+						<header><Label text="Car Id"/></header>
+					</Column>
+					<Column>
+						<header><Label text="Customer Id"/></header>
+					</Column>
+					<Column>
+						<header><Label text="Model"/></header>
+					</Column>
+					<Column>
+						<header><Label text="Description"/></header>
+					</Column>
+					<Column>
+						<header><Label text="Vin"/></header>
+					</Column>
+					<Column>
+						<header><Label text="License plate"/></header>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem>
+						<cells>
+							<Input value="{path: 'carModel>CARID'}" name="CarId" editable='false'/>
+							<Input value="{path: 'carModel>CUSTID'}" name="CustId"/>
+							<Input value="{path: 'carModel>MODEL'}" name="Model"/>
+							<Input value="{path: 'carModel>DESCR'}" name="Descr"/>
+							<Input value="{path: 'carModel>VIN'}" name="Vin"/>
+							<Input value="{path: 'carModel>LICPLATE'}" name="LicPlate"/>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</Panel>
+	</ScrollContainer>
+</core:View>

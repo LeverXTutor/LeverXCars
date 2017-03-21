@@ -1,0 +1,42 @@
+{
+    "format_version": 1,
+    "imports": [
+        {
+            "target_table": "LeverXCars.data::core_model.Car",
+            "source_data": {
+                "data_type": "CSV",
+                "file_name": "LeverXCars.load::car.csv",
+                "has_header": true
+            },
+            "import_settings": {
+                "import_columns": [
+                    "CARID",
+					"CUSTID",
+					"MODEL",
+					"DESCR",
+					"VIN",
+					"LICPLATE"
+                ]
+            }
+        },
+		{
+            "target_table": "LeverXCars.data::core_model.Service",
+            "source_data": {
+                "data_type": "CSV",
+                "file_name": "LeverXCars.load::service.csv",
+                "has_header": true
+            },
+            "import_settings": {
+                "import_columns": [
+                    "SERVICEID",
+					"CARID",
+					"STARTDATE",
+					"ENDDATE",
+					"DESCR",
+					"AMOUNT",
+					"CURRENCY"
+                ]
+            }
+        }
+    ]
+}

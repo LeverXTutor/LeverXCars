@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <style>
+        .mobile-list-item {
+            padding: 0.6em;
+        }
+        .paddingAll {
+            padding: 5px;
+        }
+        .alignText {
+            line-height: 2.5;
+            margin-right: 1em;
+            margin-left: 1em;            
+        }
+        .iconPadding {
+            margin-left: 2.5rem;
+            line-height: 2 !important;
+        }
+    </style>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<title>LeverX Cars</title>
+	    <!-- <script id="sap-ui-bootstrap" src="https://sapui5.hana.ondemand.com/resources/sap-ui-core.js" -->
+	<script src="https://sapui5.hana.ondemand.com/resources/sap-ui-core.js"
+		id="sap-ui-bootstrap" data-sap-ui-libs="sap.m, sap.me"
+		data-sap-ui-theme="sap_bluecrystal"
+		data-sap-ui-xx-bindingSyntax="complex"
+		data-sap-ui-resourceroots='{
+				"leverx.carCrud": "./",
+				"controller": "./controller",
+				"odataView": "./odataView"}'>
+	</script>
+	<script type="text/javascript" src="../common/error.js" ></script>  
+	<script>
+	
+	new sap.m.Shell({
+		title: "Test App",
+		app : new sap.ui.core.ComponentContainer({
+			name : "leverx.carCrud",
+			width: "100%",
+			height: "100%"
+		})
+	}).placeAt("content");
+	
+	</script>
+</head>
+<body class="sapUiBody" role="application">
+	<div id="content"></div>
+</body>
+</html>	

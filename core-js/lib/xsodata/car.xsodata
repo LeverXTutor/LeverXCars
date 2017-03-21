@@ -1,19 +1,15 @@
 service {
-	"car_std2.data::core_model.Car" as "Car" navigates ( "Services" as "CarService", "Customer" as "Customer")
+	"LeverXCars.data::core_model.Car" as "Car" navigates ( "Services" as "CarService", "CarCustomer" as "CarCustomer")
 		create using "xsjs:carCreateMethod.xsjslib::carCreate";
 	
 	"LeverXCars.data::core_model.Service" as "CarService";
-	"LeverXCars.data::core_model.CustomerView" as "Customer";
+	"LeverXCars.data::core_model.CustomerView" as "Customer" keys ("CustomerId");
 	
 	association "Services"
-		principal "Car"("CARID")
-		multiplicity "1"
-		dependent "CarService"("CARID")
-		multiplicity "*";
+		principal "Car"("CARID") multiplicity "1"
+		dependent "CarService"("CARID")	multiplicity "*";
 		
-	association "Customer"
-		principal "Customer"("CUSTID")
-		multiplicity "1"
-		dependent "Car"("CUSTID")
-		multiplicity "*";
+	association "CarCustomer"
+		principal "Car"("CUSTID") multiplicity "1"
+		dependent "Customer"("CustomerId") multiplicity "1";
 }
