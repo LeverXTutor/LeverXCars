@@ -30,7 +30,7 @@ sap.ui.controller("controller.App", {
 	},
 
 	callDeleteSelected: function() {
-		var oTable = sap.ui.getCore().byId("app" + "--TableCar");
+		var oTable = this.getView().byId("TableCar");
 		var oModel = sap.ui.getCore().getModel("carModel");
 
 		if (oTable !== null) {
