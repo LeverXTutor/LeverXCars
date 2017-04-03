@@ -1,17 +1,1 @@
-{
-	"type": "sap.html5",
-	"builders": {
-		"default": "ui5-builder",
-		"configs": {}
-	},
-	"runners": {
-		"configs": {}
-	},
-	"attributes": {
-		"mta_module_parent": ["/LeverXCars"],
-		"sap.watt.common.setting": [
-			"{\"generation\":[{\"templateId\":\"hanatemplates.ui5project\",\"templateVersion\":\"1.0.0\",\"dateTimeStamp\":\"Thu, 16 Mar 2017 07:56:15 GMT\"}]}"
-		]
-	},
-	"mixinTypes": ["mtamodule"]
-}
+{"type":"sap.html5","builders":{"default":"ui5-builder","configs":{}},"runners":{"configs":{}},"attributes":{"mta_module_parent":["/LeverXCars"],"sap.watt.common.setting":["{\"generation\":[{\"templateId\":\"hanatemplates.ui5project\",\"templateVersion\":\"1.0.0\",\"dateTimeStamp\":\"Thu, 16 Mar 2017 07:56:15 GMT\"}]}"]},"mixinTypes":["mtamodule"]}

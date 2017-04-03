@@ -56,6 +56,6 @@ resources:
  - name: CrossContainerService
    type: org.cloudfoundry.existing-service
    parameters:
-     service-name: SAPERP-3y1e18qwpvtwqq3w-SAPERP-hdi-container
+     service-name: SAPERP-w0z9b9th4vh30v5c-SAPERP-hdi-container
    properties:
      saperp-service-name: ${service-name}
