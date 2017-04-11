@@ -1,0 +1,43 @@
+PROCEDURE "LeverXCars.procedures::createCar" (
+	IN im_cust_id NVARCHAR(20),
+	IN im_model NVARCHAR(10),
+	IN im_descr NVARCHAR(30),
+	IN im_vin NVARCHAR(17),
+	IN im_licplate NVARCHAR(10),
+	OUT ex_message String)
+	
+   LANGUAGE SQLSCRIPT
+   SQL SECURITY INVOKER
+   --DEFAULT SCHEMA <default_schema_name>
+   AS
+BEGIN
+   DECLARE empty_par_cond CONDITION FOR SQL_ERROR_CODE 10001;
+   DECLARE car_count INTEGER DEFAULT 0;
+   
+   	DECLARE EXIT HANDLER FOR empty_par_cond    -- RESIGNAL
+	BEGIN
+	  ex_message = 'Error Code: ' || ::SQL_ERROR_CODE || ' ' || ::SQL_ERROR_MESSAGE; 
+	END;
+	
+	DECLARE EXIT HANDLER FOR SQLEXCEPTION   -- SQL_ERROR_CODE 301
+	BEGIN
+	  ex_message = 'SQL Exception occurred!';   
+	END;
+	
+	IF :im_cust_id = '' OR :im_model = ' ' OR :im_descr = '' OR :im_vin = '' OR :im_licplate = '' THEN
+		SIGNAL empty_par_cond SET MESSAGE_TEXT =  'Input parameter can not be empty';
+    END IF;
+    
+    SELECT COUNT(*) INTO car_count FROM "LeverXCars.data::core_model.Car" AS Car
+    	WHERE Car.CUSTID = :im_cust_id
+    	  AND Car.VIN    = :im_vin;
+    IF car_count > 0 THEN
+    	SIGNAL empty_par_cond SET MESSAGE_TEXT =  'Car record with the same VIN and Owner already exist';
+    END IF;
+    
+    INSERT INTO "LeverXCars.data::core_model.Car"
+    	VALUES ("LeverXCars.sequences::carId".nextval, im_cust_id, im_model, im_descr, im_vin, im_licplate);
+    	
+    ex_message = 'New car created';
+   
+END
